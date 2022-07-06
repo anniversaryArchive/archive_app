@@ -7,7 +7,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DefaultAppbar(title: '메인화면',),
+      appBar: DefaultAppbar(
+        title: '메인화면',
+      ),
       body: Center(
         child: Text('Home'),
       ),
