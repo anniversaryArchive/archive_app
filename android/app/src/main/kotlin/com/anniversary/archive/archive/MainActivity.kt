@@ -1,4 +1,4 @@
-package com.anniversary.archive.archive
+package com.anniversary.archive
 
 import io.flutter.embedding.android.FlutterActivity
 

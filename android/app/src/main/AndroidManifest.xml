@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.anniversary.archive.archive">
+    package="com.anniversary.archive">
    <application
         android:label="archive"
         android:name="${applicationName}"
