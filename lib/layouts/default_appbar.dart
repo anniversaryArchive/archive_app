@@ -15,7 +15,7 @@ class DefaultAppbar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.black,
       elevation: 0.0,
       title: Text(
-        '${title}',
+        title,
         style: TextStyle(
           fontWeight: FontWeight.bold,
           letterSpacing: 0.6,
