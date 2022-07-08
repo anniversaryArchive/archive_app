@@ -1,4 +1,4 @@
-import 'package:archive/models/Artist.dart';
+import 'package:archive/models/artist.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'group.g.dart';
@@ -10,12 +10,14 @@ class Group{
   final DateTime createdAt;  // 생성 일자
   final DateTime updatedAt;  // 마지막 업데이트 일자
   final DateTime debutDate;  // 데뷔일
+  final List<Artist>? artists; // 아티스트 리스트
 
   Group({
     required this.name,
     required this.createdAt,
     required this.updatedAt,
     required this.debutDate,
+    this.artists,
   });
 
   factory Group.fromJson(Object? json) =>
