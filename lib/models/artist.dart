@@ -12,6 +12,7 @@ class Artist {
   final DateTime debutDate; // 데뷔일
   final DateTime birthDay; // 생일
   final Group? group; // 아티스트가 속한 그룹
+  final dynamic image; // 아티스트 이미지
 
   Artist({
     required this.name,
@@ -20,6 +21,7 @@ class Artist {
     required this.debutDate,
     required this.birthDay,
     this.group,
+    this.image
   });
 
   factory Artist.fromJson(Object? json) =>

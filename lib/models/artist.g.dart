@@ -15,6 +15,7 @@ Artist _$ArtistFromJson(Map<String, dynamic> json) {
     birthDay: DateTime.parse(json['birthDay'] as String),
     group:
         json['group'] == null ? null : Group.fromJson(json['group'] as Object),
+    image: json['image'],
   );
 }
 
@@ -25,4 +26,5 @@ Map<String, dynamic> _$ArtistToJson(Artist instance) => <String, dynamic>{
       'debutDate': instance.debutDate.toIso8601String(),
       'birthDay': instance.birthDay.toIso8601String(),
       'group': instance.group,
+      'image': instance.image,
     };
