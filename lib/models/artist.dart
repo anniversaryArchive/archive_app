@@ -17,7 +17,7 @@ class Artist {
   Artist({
     required this.name,
     required this.createdAt,
-    this.updatedAt,
+    required this.updatedAt,
     required this.debutDate,
     required this.birthDay,
     this.group,
