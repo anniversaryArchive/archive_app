@@ -1,3 +1,4 @@
+import 'package:archive/common/config.dart';
 import 'package:archive/models/group.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -23,6 +24,13 @@ class Artist {
     this.group,
     this.image
   });
+
+  String? get imagePath {
+    Config config = Config();
+
+    if (image == null) { return null; }
+    return '${config.host}/${image['_id']}';
+  }
 
   factory Artist.fromJson(Object? json) =>
       _$ArtistFromJson(json as Map<String, dynamic>);
