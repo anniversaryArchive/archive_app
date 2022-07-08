@@ -9,7 +9,7 @@ class Artist {
 
   final String name; // 아티스트 명
   final DateTime createdAt; // 생성 일자
-  final DateTime? updatedAt; // 마지막 업데이트 일자
+  final DateTime updatedAt; // 마지막 업데이트 일자
   final DateTime debutDate; // 데뷔일
   final DateTime birthDay; // 생일
   final Group? group; // 아티스트가 속한 그룹
