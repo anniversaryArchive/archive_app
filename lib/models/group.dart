@@ -8,7 +8,7 @@ class Group{
 
   final String name;  // 그룹명
   final DateTime createdAt;  // 생성 일자
-  final DateTime updatedAt;  // 마지막 업데이트 일자
+  final DateTime? updatedAt;  // 마지막 업데이트 일자
   final DateTime debutDate;  // 데뷔일
 
   Group({
