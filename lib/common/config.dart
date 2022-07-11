@@ -1,3 +1,3 @@
 class Config {
-  final String host = 'https://anniversary-archive.herokuapp.com';
+  static final String host = 'https://anniversary-archive.herokuapp.com';
 }
