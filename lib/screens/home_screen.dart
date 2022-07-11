@@ -1,3 +1,4 @@
+import 'package:archive/layouts/default_appbar.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -5,7 +6,13 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: Center(child: Text('Home')));
+    return Scaffold(
+      appBar: DefaultAppbar(
+        title: '메인화면',
+      ),
+      body: Center(
+        child: Text('Home'),
+      ),
+    );
   }
 }
-
