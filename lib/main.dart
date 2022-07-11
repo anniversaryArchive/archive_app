@@ -2,6 +2,7 @@
 
 import 'package:archive/controllers/artist_controller.dart';
 import 'package:archive/screens/home_screen.dart';
+import 'package:archive/screens/select_artist_screen.dart';
 import 'package:archive/services/graphql_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -46,8 +47,13 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      initialRoute: '/',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        backgroundColor: Colors.black,
+        scaffoldBackgroundColor: Colors.black,
+      ),
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/select-artist',
       getPages: _getPages(),
     );
   }
@@ -58,6 +64,7 @@ class _MyAppState extends State<MyApp> {
   List<GetPage> _getPages () {
     return [
       GetPage(name: '/', page: () => const HomeScreen()),
+      GetPage(name: '/select-artist', page: () => const SelectArtistScreen()),
     ];
   }
 }

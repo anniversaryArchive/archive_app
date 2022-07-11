@@ -1,3 +1,4 @@
+import 'package:archive/common/config.dart';
 import 'package:archive/models/artist.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -21,6 +22,11 @@ class Group{
     required this.logo,
     this.artists,
   });
+
+  String? get logoPath {
+    if (logo == null) { return null; }
+    return '${Config.host}/image/${logo['_id']}';
+  }
 
   factory Group.fromJson(Object? json) =>
       _$GroupFromJson(json as Map<String, dynamic>);
