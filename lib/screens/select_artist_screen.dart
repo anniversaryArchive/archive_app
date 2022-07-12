@@ -48,7 +48,6 @@ class _SelectArtistScreenState extends State<SelectArtistScreen> {
     } catch (error) { rethrow; }
   }
 
-  // Artist Logo View
   Widget _buildArtistLogo(String? logoPath) {
     BorderRadius radius = BorderRadius.circular(_logoSize);
     BoxDecoration decoration = BoxDecoration(color: Colors.white, borderRadius: radius);
@@ -61,13 +60,10 @@ class _SelectArtistScreenState extends State<SelectArtistScreen> {
         ? ClipRRect(
           borderRadius: radius,
           child: Image.network(logoPath),
-        ) : Container(
-        decoration: decoration,
-      ),
+        ) : Container(decoration: decoration),
     );
   }
 
-  // Artist Name View
   Widget _buildArtistName(String name) {
     return Container(
       height: _nameHeight,
@@ -79,7 +75,6 @@ class _SelectArtistScreenState extends State<SelectArtistScreen> {
     );
   }
 
-  // Artist Item
   Widget _buildArtistItem(Group artist) {
     return InkWell(
       onTap: () => _clickArtist(artist.id),
@@ -92,7 +87,6 @@ class _SelectArtistScreenState extends State<SelectArtistScreen> {
     );
   }
 
-  // Artist Grid View
   Widget _buildArtistGridView() {
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
