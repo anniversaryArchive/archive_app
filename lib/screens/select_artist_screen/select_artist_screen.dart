@@ -3,6 +3,7 @@
 import 'package:archive/api/queries.dart';
 import 'package:archive/layouts/default_appbar.dart';
 import 'package:archive/models/group.dart';
+import 'package:archive/screens/select_artist_screen/components/artist_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graphql/client.dart';
@@ -48,45 +49,6 @@ class _SelectArtistScreenState extends State<SelectArtistScreen> {
     } catch (error) { rethrow; }
   }
 
-  Widget _buildArtistLogo(String? logoPath) {
-    BorderRadius radius = BorderRadius.circular(_logoSize);
-    BoxDecoration decoration = BoxDecoration(color: Colors.white, borderRadius: radius);
-
-    return Container(
-      width: _logoSize,
-      height: _logoSize,
-      decoration: decoration.copyWith(color: Colors.grey),
-      child: logoPath != null
-        ? ClipRRect(
-          borderRadius: radius,
-          child: Image.network(logoPath),
-        ) : Container(decoration: decoration),
-    );
-  }
-
-  Widget _buildArtistName(String name) {
-    return Container(
-      height: _nameHeight,
-      alignment: Alignment.bottomCenter,
-      child: Text(
-        name,
-        style: Theme.of(context).textTheme.bodyText1,
-      ),
-    );
-  }
-
-  Widget _buildArtistItem(Group artist) {
-    return InkWell(
-      onTap: () => _clickArtist(artist.id),
-      child: Column(
-        children: <Widget>[
-          _buildArtistLogo(artist.logoPath),
-          _buildArtistName(artist.name),
-        ],
-      ),
-    );
-  }
-
   Widget _buildArtistGridView() {
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -96,7 +58,12 @@ class _SelectArtistScreenState extends State<SelectArtistScreen> {
       itemCount: _artists.length,
       itemBuilder: (BuildContext context, int index) {
         Group artist = _artists[index];
-        return _buildArtistItem(artist);
+        return ArtistItem(
+          artist: artist,
+          logoSize: _logoSize,
+          nameHeight: _nameHeight,
+          onClick: _clickArtist,
+        );
       },
     );
   }
