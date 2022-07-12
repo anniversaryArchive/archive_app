@@ -1,3 +1,5 @@
+// ignore_for_file: slash_for_doc_comments
+
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -14,6 +16,7 @@ class LoginDialog extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 25.0),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             IconButton(
               onPressed: _onClickLoginWithTwitter,
@@ -26,6 +29,10 @@ class LoginDialog extends StatelessWidget {
     );
   }
 
+  /**
+   * Twitter 로그인 후 서버와의 작업 시
+   * authToken / user.id / user.screenName 등을 활용하면 될 것 같습니다
+   */
   void _onClickLoginWithTwitter() async {
     final TwitterLogin twitterLogin = TwitterLogin(
       apiKey: dotenv.env['TWITTER_API_KEY'] ?? '',
