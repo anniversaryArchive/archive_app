@@ -8,6 +8,7 @@ part of 'group.dart';
 
 Group _$GroupFromJson(Map<String, dynamic> json) {
   return Group(
+    id: json['_id'] as String,
     name: json['name'] as String,
     createdAt: DateTime.parse(json['createdAt'] as String),
     updatedAt: DateTime.parse(json['updatedAt'] as String),
@@ -20,6 +21,7 @@ Group _$GroupFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$GroupToJson(Group instance) => <String, dynamic>{
+      'id': instance.id,
       'name': instance.name,
       'createdAt': instance.createdAt.toIso8601String(),
       'updatedAt': instance.updatedAt.toIso8601String(),

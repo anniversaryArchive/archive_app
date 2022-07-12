@@ -1,5 +1,6 @@
 class CommonQuery {
   static String group = '''
+    _id
     name
     createdAt
     updatedAt

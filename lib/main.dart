@@ -51,6 +51,7 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.blue,
         backgroundColor: Colors.black,
         scaffoldBackgroundColor: Colors.black,
+        textTheme: Typography(platform: TargetPlatform.iOS).white,
       ),
       debugShowCheckedModeBanner: false,
       initialRoute: '/select-artist',
@@ -65,6 +66,7 @@ class _MyAppState extends State<MyApp> {
     return [
       GetPage(name: '/', page: () => const HomeScreen()),
       GetPage(name: '/select-artist', page: () => const SelectArtistScreen()),
+      GetPage(name: '/select-member', page: () => const HomeScreen()),
     ];
   }
 }
