@@ -1,5 +1,3 @@
-// ignore_for_file: slash_for_doc_comments
-
 import 'package:archive/api/queries.dart';
 import 'package:archive/layouts/default_appbar.dart';
 import 'package:archive/models/group.dart';
@@ -35,10 +33,8 @@ class _SelectArtistScreenState extends State<SelectArtistScreen> {
     _size = MediaQuery.of(context).size;
   }
 
-  /**
-   * Artist List 를 서버에서 받아온다.
-   * - 성공적으로 데이터를 받아왔을 경우, _isLoading 을 false로 바꾸어준다.
-   */
+  /// Artist List 를 서버에서 받아온다.
+  /// * 성공적으로 데이터를 받아왔을 경우, _isLoading 을 false 로 바꾸어준다.
   void _getArtistList() async {
     try {
       QueryResult result = await Queries.getGroups();
