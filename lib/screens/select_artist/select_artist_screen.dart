@@ -1,4 +1,5 @@
 import 'package:archive/api/queries.dart';
+import 'package:archive/components/custom_loading.dart';
 import 'package:archive/layouts/default_appbar.dart';
 import 'package:archive/models/group.dart';
 import 'package:archive/screens/select_artist/components/artist_item.dart';
@@ -64,19 +65,12 @@ class _SelectArtistScreenState extends State<SelectArtistScreen> {
     );
   }
 
-  Widget _buildLoading() {
-    return Container(
-      alignment: Alignment.center,
-      child: CircularProgressIndicator(),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: DefaultAppbar(title: '아티스트 선택'),
       body: _isLoading
-        ? _buildLoading()
+        ? CustomLoading()
         : _buildArtistGridView(),
     );
   }
