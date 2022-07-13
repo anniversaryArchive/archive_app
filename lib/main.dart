@@ -2,6 +2,7 @@
 
 import 'package:archive/controllers/artist_controller.dart';
 import 'package:archive/screens/home_screen.dart';
+import 'package:archive/screens/select-artist-in-group/select_group_artist_screen.dart';
 import 'package:archive/services/graphql_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -58,6 +59,7 @@ class _MyAppState extends State<MyApp> {
   List<GetPage> _getPages () {
     return [
       GetPage(name: '/', page: () => const HomeScreen()),
+      GetPage(name: '/select-group-artist', page: () => SelectGroupArtistScreen()),
     ];
   }
 }
