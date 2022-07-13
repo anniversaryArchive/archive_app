@@ -1,3 +1,4 @@
+import 'package:archive/common/functions.dart';
 import 'package:archive/controllers/artist_controller.dart';
 import 'package:archive/screens/home_screen.dart';
 import 'package:archive/screens/select_artist/select_artist_screen.dart';
@@ -44,7 +45,7 @@ class _MyAppState extends State<MyApp> {
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: CommonFunctions.createMaterialColor(Colors.white),
         backgroundColor: Colors.black,
         scaffoldBackgroundColor: Colors.black,
         textTheme: Typography(platform: TargetPlatform.iOS).white,
