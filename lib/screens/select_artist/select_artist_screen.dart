@@ -3,7 +3,7 @@
 import 'package:archive/api/queries.dart';
 import 'package:archive/layouts/default_appbar.dart';
 import 'package:archive/models/group.dart';
-import 'package:archive/screens/select_artist_screen/components/artist_item.dart';
+import 'package:archive/screens/select_artist/components/artist_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graphql/client.dart';
