@@ -37,6 +37,7 @@ dependencies:
   get: ^4.6.5
   graphql: ^5.1.1
   json_annotation: ^4.0.1
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
