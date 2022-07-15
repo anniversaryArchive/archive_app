@@ -13,7 +13,7 @@ class ArtistItem extends StatelessWidget {
   final Group artist;
   final double logoSize;
   final double nameHeight;
-  final Function(String) onClick;
+  final Function(Group) onClick;
 
   Widget _buildArtistLogo() {
     BorderRadius radius = BorderRadius.circular(logoSize);
@@ -45,7 +45,7 @@ class ArtistItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => onClick(artist.id),
+      onTap: () => onClick(artist),
       child: Column(
         children: <Widget>[
           _buildArtistLogo(),

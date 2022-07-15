@@ -1,5 +1,6 @@
 import 'package:archive/api/queries.dart';
 import 'package:archive/components/custom_loading.dart';
+import 'package:archive/controllers/data_controller.dart';
 import 'package:archive/layouts/default_appbar.dart';
 import 'package:archive/models/group.dart';
 import 'package:archive/screens/select_artist/components/artist_item.dart';
@@ -15,6 +16,8 @@ class SelectArtistScreen extends StatefulWidget {
 }
 
 class _SelectArtistScreenState extends State<SelectArtistScreen> {
+  final DataController _dataController = Get.find<DataController>();
+
   late Size _size;
   List<Group> _artists = [];
   bool _isLoading = true;
@@ -75,7 +78,8 @@ class _SelectArtistScreenState extends State<SelectArtistScreen> {
     );
   }
 
-  void _clickArtist(String id) {
-    Get.toNamed('/select-member', parameters: { id: id });
+  void _clickArtist(Group artist) {
+    _dataController.selectGroup(artist);
+    Get.toNamed('/select-member');
   }
 }

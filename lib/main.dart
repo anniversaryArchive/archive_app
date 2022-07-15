@@ -1,5 +1,5 @@
 import 'package:archive/common/functions.dart';
-import 'package:archive/controllers/artist_controller.dart';
+import 'package:archive/controllers/data_controller.dart';
 import 'package:archive/screens/home_screen.dart';
 import 'package:archive/screens/select_artist/select_artist_screen.dart';
 import 'package:archive/services/graphql_service.dart';
@@ -37,7 +37,7 @@ class _MyAppState extends State<MyApp> {
   /// 앱 내에서 공통적으로 사용되는 Controller 에 경우 여기서 초기화해주시면
   /// Get.find<...>() 를 통해 페이지 내에서 공통으로 사용할 수 있습니다.
   void _initControllers() {
-    Get.put(ArtistController());
+    Get.put(DataController());
   }
 
   @override
