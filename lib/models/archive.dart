@@ -6,8 +6,8 @@ part 'archive.g.dart';
 class Archive {
   final String id;
   final String name;  // 카페 이름
-  final double lat;
-  final double lng;
+  final double lat;   // 위도
+  final double lng;   // 경도
 
   Archive({
     required this.id,
