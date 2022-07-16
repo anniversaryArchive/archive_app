@@ -1,6 +1,7 @@
 // ignore_for_file: slash_for_doc_comments
 
 import 'package:archive/controllers/artist_controller.dart';
+import 'package:archive/screens/archive/archive_screen.dart';
 import 'package:archive/screens/home_screen.dart';
 import 'package:archive/services/graphql_service.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +48,7 @@ class _MyAppState extends State<MyApp> {
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
-      initialRoute: '/',
+      initialRoute: '/archive',
       getPages: _getPages(),
     );
   }
@@ -58,6 +59,7 @@ class _MyAppState extends State<MyApp> {
   List<GetPage> _getPages () {
     return [
       GetPage(name: '/', page: () => const HomeScreen()),
+      GetPage(name: '/archive', page: () => const ArchiveScreen()),
     ];
   }
 }
