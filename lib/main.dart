@@ -5,9 +5,11 @@ import 'package:archive/screens/archive/archive_screen.dart';
 import 'package:archive/screens/home_screen.dart';
 import 'package:archive/services/graphql_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 
 void main() async {
+  await dotenv.load(fileName: 'assets/config/.env');
   try {
     await initServices();
   } catch (_) { }
@@ -50,6 +52,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(primarySwatch: Colors.blue),
       initialRoute: '/archive',
       getPages: _getPages(),
+      debugShowCheckedModeBanner: false,
     );
   }
 

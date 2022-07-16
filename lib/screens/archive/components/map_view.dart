@@ -13,6 +13,7 @@ class MapView extends StatelessWidget {
     required this.initMapController,
     required this.onCameraIdle,
     required this.onTapMarker,
+    required this.onLoad,
   }) : super(key: key);
 
   final double lat;
@@ -20,12 +21,11 @@ class MapView extends StatelessWidget {
   final Function(WebViewController) initMapController;
   final Function(double, double) onCameraIdle;
   final Function(String) onTapMarker;
+  final VoidCallback onLoad;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
-    print('env : ${dotenv.env}');
 
     return KakaoMapView(
       width: size.width,
@@ -36,10 +36,18 @@ class MapView extends StatelessWidget {
       showMapTypeControl: true,
       showZoomControl: true,
       mapController: initMapController,
-      customScript: mapCustomScript,
+      customScript: '''
+        $mapCustomScript
+        ${_onLoad()}
+      ''',
       onTapMarker: _onTapMarker,
       cameraIdle: _onCameraIdle,
     );
+  }
+
+  String _onLoad() {
+    onLoad();
+    return '';
   }
 
   void _onTapMarker(JavascriptMessage message) {
@@ -67,11 +75,6 @@ const mapCustomScript = '''
       };
     })(id));
   }
-        
-  kakao.maps.event.addListener(map, 'zoom_changed', function() {        
-    const level = map.getLevel();
-    zoomChanged.postMessage(level.toString());
-  });
       
   kakao.maps.event.addListener(map, 'dragend', function() {        
     const latlng = map.getCenter();
