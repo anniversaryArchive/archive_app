@@ -18,11 +18,9 @@ class _SelectGroupArtistState extends State<SelectGroupArtistScreen> {
   late List<Artist> groupArtists;
 
   void _getGroupArtist() async {
-    QueryResult groupResult = await Queries.getGroup(groupId);
-
-    QueryResult artistsResult = await Queries.getArtists();
-    if (artistsResult.data?['artists'] != null) {
-      List<Artist> artists = artistsResult.data?['artists'].map((artist) => Artist.fromJson(artist)).toList();
+    QueryResult result = await Queries.getArtists();
+    if (result.data?['artists'] != null) {
+      List<Artist> artists = result.data?['artists'].map((artist) => Artist.fromJson(artist)).toList();
       
       artists.forEach((artist) {
         if(artist.group.id == groupId) {
