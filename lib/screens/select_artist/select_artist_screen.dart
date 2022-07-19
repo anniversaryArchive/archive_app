@@ -80,6 +80,6 @@ class _SelectArtistScreenState extends State<SelectArtistScreen> {
 
   void _clickArtist(Group artist) {
     _dataController.selectGroup(artist);
-    Get.toNamed('/select-member');
+    Get.toNamed('/select-group-artist');
   }
 }
