@@ -18,6 +18,7 @@ class DefaultAppbar extends StatelessWidget implements PreferredSizeWidget {
         title,
         style: TextStyle(
           fontWeight: FontWeight.bold,
+          color: Colors.white,
           letterSpacing: 0.6,
         ),
       ),
