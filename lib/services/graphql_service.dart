@@ -1,13 +1,12 @@
+import 'package:archive/common/config.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:graphql/client.dart';
 
 class GraphQLService extends GetxService {
   static GraphQLClient client = GraphQLClient(
     cache: GraphQLCache(),
-    link: HttpLink(host),
+    link: HttpLink(Config.host),
   );
-
-  static String host = 'http://localhost:3000/graphql';
 
   Future<GraphQLService> init() async {
     initGraphQLClient();
@@ -15,7 +14,7 @@ class GraphQLService extends GetxService {
   }
 
   void initGraphQLClient({ String? token }) {
-    HttpLink httpLink = HttpLink(host);
+    HttpLink httpLink = HttpLink(Config.host);
     client = GraphQLClient(cache: GraphQLCache(), link: httpLink);
   }
 }
