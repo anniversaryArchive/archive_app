@@ -1,7 +1,7 @@
-// ignore_for_file: slash_for_doc_comments
-
-import 'package:archive/controllers/artist_controller.dart';
+import 'package:archive/common/functions.dart';
+import 'package:archive/controllers/data_controller.dart';
 import 'package:archive/screens/home_screen.dart';
+import 'package:archive/screens/select_artist/select_artist_screen.dart';
 import 'package:archive/services/graphql_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -34,30 +34,34 @@ class _MyAppState extends State<MyApp> {
     _initControllers();
   }
 
-  /**
-   * 앱 내에서 공통적으로 사용되는 Controller 에 경우 여기서 초기화해주시면
-   * Get.find<...>() 를 통해 페이지 내에서 공통으로 사용할 수 있습니다.
-   */
+  /// 앱 내에서 공통적으로 사용되는 Controller 에 경우 여기서 초기화해주시면
+  /// Get.find<...>() 를 통해 페이지 내에서 공통으로 사용할 수 있습니다.
   void _initControllers() {
-    Get.put(ArtistController());
+    Get.put(DataController());
   }
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      initialRoute: '/',
+      theme: ThemeData(
+        primarySwatch: CommonFunctions.createMaterialColor(Colors.white),
+        backgroundColor: Colors.black,
+        scaffoldBackgroundColor: Colors.black,
+        textTheme: Typography(platform: TargetPlatform.iOS).white,
+      ),
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/select-artist',
       getPages: _getPages(),
     );
   }
 
-  /**
-   * 페이지의 Route 를 정의해줍니다.
-   */
+  /// 페이지의 Route 를 정의해줍니다.
   List<GetPage> _getPages () {
     return [
       GetPage(name: '/', page: () => const HomeScreen()),
+      GetPage(name: '/select-artist', page: () => const SelectArtistScreen()),
+      GetPage(name: '/select-member', page: () => const HomeScreen()),
     ];
   }
 }
