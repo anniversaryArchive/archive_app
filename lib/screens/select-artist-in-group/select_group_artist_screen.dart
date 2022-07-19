@@ -1,4 +1,6 @@
 import 'package:archive/api/queries.dart';
+import 'package:archive/components/custom_loading.dart';
+import 'package:archive/controllers/data_controller.dart';
 import 'package:archive/layouts/default_appbar.dart';
 import 'package:archive/models/artist.dart';
 import 'package:archive/screens/select-artist-in-group/components/select-group-artist-item.dart';
@@ -14,20 +16,33 @@ class SelectGroupArtistScreen extends StatefulWidget {
 }
 
 class _SelectGroupArtistState extends State<SelectGroupArtistScreen> {
-  late String groupId = Get.parameters['id'] as String;
-  late List<Artist> groupArtists;
+  final DataController _dataController = Get.find<DataController>();
+  final List<Artist> _groupArtists = [];
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _getGroupArtist();
+  }
 
   void _getGroupArtist() async {
-    QueryResult result = await Queries.getArtists();
-    if (result.data?['artists'] != null) {
-      List<Artist> artists = result.data?['artists'].map((artist) => Artist.fromJson(artist)).toList();
-      
-      artists.forEach((artist) {
-        if(artist.group.id == groupId) {
-          groupArtists.add(artist);
+    try {
+      QueryResult result = await Queries.getArtists();
+
+      if (result.data?['artists'] != null) {
+        List<dynamic> artistsResult = result.data?['artists'];
+        List<Artist> artistList = artistsResult.map((artist) => Artist.fromJson(artist)).toList();
+        for (var artist in artistList) {
+          if (_dataController.group.value?.id == artist.group?.id) {
+            _groupArtists.add(artist);
+          }
         }
-      });
-    }
+      }
+
+      setState(() { _isLoading = false; });
+    } catch (error) { rethrow; }
   }
 
   @override
@@ -38,15 +53,17 @@ class _SelectGroupArtistState extends State<SelectGroupArtistScreen> {
       ),
       body: SafeArea(
         bottom: false,
-        child: ListView.builder(
-            itemCount: 3,
-            itemBuilder: (BuildContext context, int index) {
-              Artist groupArtist = groupArtists[index];
+        child: _isLoading
+            ? CustomLoading()
+            : ListView.builder(
+                itemCount: _groupArtists.length,
+                itemBuilder: (BuildContext context, int index) {
+                  Artist groupArtist = _groupArtists[index];
 
-              return SelectGroupArtistItem(
-                groupArtist: groupArtist,
-              );
-            }),
+                  return SelectGroupArtistItem(
+                    groupArtist: groupArtist,
+                  );
+                }),
       ),
     );
   }
