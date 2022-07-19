@@ -22,7 +22,7 @@ class Queries {
         group: Group (id: \$id) {
           ${CommonQuery.group}
         }
-리      }
+      }
       '''),
       variables: { 'id': id },
     ));
@@ -34,7 +34,7 @@ class Queries {
       query () {
         artists {
             ${CommonQuery.artist}
-          }
+        }
       }
       '''),
     ));

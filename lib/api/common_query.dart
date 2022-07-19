@@ -17,6 +17,9 @@ class CommonQuery {
     updatedAt
     debutDate
     birthDay
+    group {
+      $group
+    }
     image {
       _id
     }
