@@ -10,4 +10,8 @@ class DataController extends GetxController {
     // TODO: Solo Artist 인 경우에는, artist 변수에 저장활 수 있게끔 구현
     this.group.value = group;
   }
+
+  void selectArtist(Artist artist) {
+    this.artist.value = artist;
+  }
 }

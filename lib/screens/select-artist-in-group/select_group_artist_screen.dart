@@ -3,6 +3,7 @@ import 'package:archive/components/custom_loading.dart';
 import 'package:archive/controllers/data_controller.dart';
 import 'package:archive/layouts/default_appbar.dart';
 import 'package:archive/models/artist.dart';
+import 'package:archive/models/group.dart';
 import 'package:archive/screens/select-artist-in-group/components/select-group-artist-item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -28,14 +29,28 @@ class _SelectGroupArtistState extends State<SelectGroupArtistScreen> {
   }
 
   void _getGroupArtist() async {
+    Group group = _dataController.group.value!;
+
     try {
       QueryResult result = await Queries.getArtists();
 
       if (result.data?['artists'] != null) {
-        List<dynamic> artistsResult = result.data?['artists'];
-        List<Artist> artistList = artistsResult.map((artist) => Artist.fromJson(artist)).toList();
+        List<dynamic> resultData = result.data?['artists'];
+        List<Artist> artistList = resultData.map((artist) => Artist.fromJson(artist)).toList();
+
+        /// 그룹 데이터를 Artist 객체에 넣어 리스트에 추가
+        Artist groupData = Artist(
+          name: group.name,
+          createdAt: group.createdAt,
+          updatedAt: group.updatedAt,
+          debutDate: group.debutDate,
+          birthDay: group.debutDate,
+          image: group.logo,
+        );
+        _groupArtists.add(groupData);
+
         for (var artist in artistList) {
-          if (_dataController.group.value?.id == artist.group?.id) {
+          if (group.id == artist.group?.id) {
             _groupArtists.add(artist);
           }
         }
@@ -62,9 +77,14 @@ class _SelectGroupArtistState extends State<SelectGroupArtistScreen> {
 
                   return SelectGroupArtistItem(
                     groupArtist: groupArtist,
+                    onClick: _clickArtist,
                   );
                 }),
       ),
     );
+  }
+
+  void _clickArtist(Artist artist) {
+    _dataController.selectArtist(artist);
   }
 }
