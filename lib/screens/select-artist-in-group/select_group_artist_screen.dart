@@ -60,6 +60,20 @@ class _SelectGroupArtistState extends State<SelectGroupArtistScreen> {
     } catch (error) { rethrow; }
   }
 
+  Widget _artistListWidget() {
+    return ListView.builder(
+      itemCount: _groupArtists.length,
+      itemBuilder: (BuildContext context, int index) {
+        Artist groupArtist = _groupArtists[index];
+
+        return SelectGroupArtistItem(
+          groupArtist: groupArtist,
+          onClick: _clickArtist,
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,21 +84,13 @@ class _SelectGroupArtistState extends State<SelectGroupArtistScreen> {
         bottom: false,
         child: _isLoading
             ? CustomLoading()
-            : ListView.builder(
-                itemCount: _groupArtists.length,
-                itemBuilder: (BuildContext context, int index) {
-                  Artist groupArtist = _groupArtists[index];
-
-                  return SelectGroupArtistItem(
-                    groupArtist: groupArtist,
-                    onClick: _clickArtist,
-                  );
-                }),
+            : _artistListWidget(),
       ),
     );
   }
 
   void _clickArtist(Artist artist) {
     _dataController.selectArtist(artist);
+    /// TODO 이후 화면전환 로직 필요
   }
 }

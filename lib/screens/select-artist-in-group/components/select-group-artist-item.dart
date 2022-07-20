@@ -9,37 +9,44 @@ class SelectGroupArtistItem extends StatelessWidget {
   const SelectGroupArtistItem({Key? key, required this.groupArtist, required this.onClick}) : super(key: key);
 
   Widget _artistImageWidget() {
+    double imageSize = 50.0;
+    BorderRadius imageRadius = BorderRadius.circular(imageSize);
+
     return Container(
-      width: 50.0,
-      height: 50.0,
+      width: imageSize,
+      height: imageSize,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(50.0),
+        borderRadius: imageRadius,
       ),
       child: groupArtist.imagePath != null
           ? ClipRRect(
-              borderRadius: BorderRadius.circular(50.0),
+              borderRadius: imageRadius,
               child: Image.network(groupArtist.imagePath!),
             )
           : Container(
               decoration: BoxDecoration(
                 color: Colors.grey,
-                borderRadius: BorderRadius.circular(50.0),
+                borderRadius: imageRadius,
               ),
             ),
     );
   }
 
-  Widget _artistInfoWidget() {
+  Widget _artistInfoWidget(context) {
     return Container(
       margin: EdgeInsets.only(left: 10.0),
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(groupArtist.name),
-            Text(formatDate(groupArtist.birthDay)),
-          ],
-        ),
+            Text(groupArtist.name,
+            style: Theme.of(context).textTheme.subtitle1,
+          ),
+          Text(
+            formatDate(groupArtist.birthDay),
+          ),
+        ],
+      ),
     );
   }
 
@@ -52,7 +59,7 @@ class SelectGroupArtistItem extends StatelessWidget {
         child: Row(
           children: [
             _artistImageWidget(),
-            _artistInfoWidget(),
+            _artistInfoWidget(context),
           ],
         ),
       ),
