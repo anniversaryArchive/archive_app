@@ -37,6 +37,8 @@ dependencies:
   get: ^4.6.5
   graphql: ^5.1.1
   json_annotation: ^4.0.1
+  kakaomap_webview: ^0.6.2
+  webview_flutter: ^3.0.4
   twitter_login: ^4.2.3
   flutter_dotenv: ^5.0.2
 
