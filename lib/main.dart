@@ -6,10 +6,12 @@ import 'package:archive/screens/select-artist-in-group/select_group_artist_scree
 import 'package:archive/services/graphql_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   try {
     await initServices();
+    await dotenv.load(fileName: 'assets/config/.env');
   } catch (_) { }
   runApp(const MyApp());
 }
