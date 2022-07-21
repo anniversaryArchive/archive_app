@@ -27,7 +27,7 @@ class Artist {
 
   String? get imagePath {
     if (image == null) { return null; }
-    return '${Config.host}/${image['_id']}';
+    return '${Config.host}/image/${image['_id']}';
   }
 
   factory Artist.fromJson(Object? json) =>
