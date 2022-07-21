@@ -46,7 +46,7 @@ class _ArchiveScreenState extends State<ArchiveScreen> {
   }
 
   // Kakao Map Controller initialize
-  void _initMapController(WebViewController controller) async {
+  void _initMapController(WebViewController controller) {
     _mapController = controller;
   }
 
@@ -68,7 +68,7 @@ class _ArchiveScreenState extends State<ArchiveScreen> {
   }
 
   /// Test) Floating Button 클릭 시, Marker 가 추가되게끔 구현
-  void _clickAddMarkerBtn() async {
+  void _clickAddMarkerBtn() {
     double lat = _lat + 0.0003;
     double lng = _lng + 0.0003;
     String id = 'archive_${_archives.length}';
