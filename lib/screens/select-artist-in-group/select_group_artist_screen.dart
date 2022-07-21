@@ -35,7 +35,7 @@ class _SelectGroupArtistState extends State<SelectGroupArtistScreen> {
       QueryResult result = await Queries.getArtists();
 
       if (result.data?['artists'] != null) {
-        List<dynamic> resultData = result.data?['artists'];
+        List<dynamic> resultData = result.data!['artists'];
         List<Artist> artistList = resultData.map((artist) => Artist.fromJson(artist)).toList();
 
         /// 그룹 데이터를 Artist 객체에 넣어 리스트에 추가
