@@ -63,7 +63,6 @@ class _MyAppState extends State<MyApp> {
   List<GetPage> _getPages () {
     return [
       GetPage(name: '/', page: () => const HomeScreen()),
-      GetPage(name: '/select-member', page: () => const HomeScreen()),
       GetPage(name: '/select-artist', page: () => const SelectArtistScreen()),
       GetPage(name: '/select-group-artist', page: () => SelectGroupArtistScreen()),
     ];
