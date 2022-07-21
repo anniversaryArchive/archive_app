@@ -7,10 +7,8 @@ import 'package:archive/services/graphql_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
-  await dotenv.load(fileName: 'assets/config/.env');
   try {
     await initServices();
     await dotenv.load(fileName: 'assets/config/.env');
