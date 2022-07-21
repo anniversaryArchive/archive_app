@@ -33,7 +33,7 @@ class Queries {
       document: gql('''
       query () {
         artists {
-            ${CommonQuery.artist}
+          ${CommonQuery.artist}
         }
       }
       '''),
@@ -45,7 +45,7 @@ class Queries {
       document: gql('''
       query (\$id: ID!) {
         artist: Artist (id: \$id) {
-            ${CommonQuery.artist}
+          ${CommonQuery.artist}
         }
       }
       '''),
