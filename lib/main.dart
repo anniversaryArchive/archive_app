@@ -1,12 +1,13 @@
 import 'package:archive/common/functions.dart';
 import 'package:archive/controllers/data_controller.dart';
+import 'package:archive/screens/archive/archive_screen.dart';
 import 'package:archive/screens/home_screen.dart';
 import 'package:archive/screens/select_artist/select_artist_screen.dart';
 import 'package:archive/screens/select-artist-in-group/select_group_artist_screen.dart';
 import 'package:archive/services/graphql_service.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:get/get.dart';
 
 void main() async {
   try {
@@ -63,6 +64,7 @@ class _MyAppState extends State<MyApp> {
   List<GetPage> _getPages () {
     return [
       GetPage(name: '/', page: () => const HomeScreen()),
+      GetPage(name: '/archive', page: () => const ArchiveScreen()),
       GetPage(name: '/select-artist', page: () => const SelectArtistScreen()),
       GetPage(name: '/select-group-artist', page: () => SelectGroupArtistScreen()),
     ];
