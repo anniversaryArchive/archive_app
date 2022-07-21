@@ -39,6 +39,7 @@ dependencies:
   json_annotation: ^4.0.1
   kakaomap_webview: ^0.6.2
   webview_flutter: ^3.0.4
+  twitter_login: ^4.2.3
   flutter_dotenv: ^5.0.2
 
 dev_dependencies:
@@ -67,6 +68,7 @@ flutter:
 
   assets:
     - assets/config/.env
+    - assets/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
