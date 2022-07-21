@@ -3,11 +3,12 @@ import 'package:archive/controllers/data_controller.dart';
 import 'package:archive/screens/archive/archive_screen.dart';
 import 'package:archive/screens/home_screen.dart';
 import 'package:archive/screens/select_artist/select_artist_screen.dart';
-import 'package:archive/screens/select-artist-in-group/select_group_artist_screen.dart';
 import 'package:archive/services/graphql_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
+
+import 'screens/select_artist_in_group/select_group_artist_screen.dart';
 
 void main() async {
   try {

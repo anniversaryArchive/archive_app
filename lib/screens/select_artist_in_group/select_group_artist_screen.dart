@@ -4,7 +4,7 @@ import 'package:archive/controllers/data_controller.dart';
 import 'package:archive/layouts/default_appbar.dart';
 import 'package:archive/models/artist.dart';
 import 'package:archive/models/group.dart';
-import 'package:archive/screens/select-artist-in-group/components/select-group-artist-item.dart';
+import 'package:archive/screens/select_artist_in_group/components/select_group_artist_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graphql/client.dart';
