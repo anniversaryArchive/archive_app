@@ -1,4 +1,5 @@
 import 'package:archive/models/archive.dart';
+import 'package:archive/screens/archive/components/map_bottom_sheet.dart';
 import 'package:archive/screens/archive/components/map_view.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -18,7 +19,8 @@ class _ArchiveScreenState extends State<ArchiveScreen> {
   double _lng = 126.92383907;           // 현재 지도 중앙 경도값
   bool _mapLoaded = false;              // 지도 Load 여부
 
-  final List<Archive> _archives = [tempArchive];  // 카페 리스트
+  // final List<Archive> _archives = [tempArchive];  // 카페 리스트
+  final List<Archive> _archives = [tempArchive, tempArchive, tempArchive, tempArchive, tempArchive, tempArchive, tempArchive, tempArchive, tempArchive, tempArchive, tempArchive, tempArchive, tempArchive, tempArchive, tempArchive, tempArchive];  // 카페 리스트
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +41,7 @@ class _ArchiveScreenState extends State<ArchiveScreen> {
               onTapMarker: _onTapMarker,
               onLoad: _onMapLoad,
             ),
+            MapBottomSheet(archives: _archives),
           ],
         ),
       ),
@@ -57,7 +60,7 @@ class _ArchiveScreenState extends State<ArchiveScreen> {
       return;
     }
     for (Archive archive in _archives) {
-      _addMarker(archive);
+      // _addMarker(archive);
     }
   }
 
