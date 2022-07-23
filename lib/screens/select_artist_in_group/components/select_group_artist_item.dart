@@ -40,10 +40,11 @@ class SelectGroupArtistItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(groupArtist.name,
-            style: Theme.of(context).textTheme.subtitle1,
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 17),
           ),
           Text(
             formatDate(groupArtist.birthDay),
+            style: Theme.of(context).textTheme.bodyText2?.copyWith(color: Colors.grey),
           ),
         ],
       ),
