@@ -39,15 +39,10 @@ class _SelectGroupArtistState extends State<SelectGroupArtistScreen> {
         List<Artist> artistList = resultData.map((artist) => Artist.fromJson(artist)).toList();
 
         /// 그룹 데이터를 Artist 객체에 넣어 리스트에 추가
-        Artist groupData = Artist(
-          name: group.name,
-          createdAt: group.createdAt,
-          updatedAt: group.updatedAt,
-          debutDate: group.debutDate,
-          birthDay: group.debutDate,
-          image: group.logo,
-        );
-        _groupArtists.add(groupData);
+        Map<String, dynamic> groupJson = group.toJson();
+        groupJson['image'] = groupJson['logo'];
+        groupJson['birthDay'] = groupJson['debutDate'];
+        _groupArtists.add(Artist.fromJson(groupJson));
 
         for (var artist in artistList) {
           if (group.id == artist.group?.id) {
