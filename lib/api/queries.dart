@@ -27,4 +27,16 @@ class Queries {
       variables: { 'id': id },
     ));
   }
+
+  static Future<QueryResult> getArchives() {
+    return GraphQLService.client.query(QueryOptions(
+      document: gql('''
+      query {
+        archives {
+          ${CommonQuery.archive}
+        }
+      }
+      '''),
+    ));
+  }
 }

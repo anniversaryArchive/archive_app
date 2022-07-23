@@ -26,7 +26,7 @@ class ArchiveItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            archive.name,
+            archive.archiveName,
             style: Theme.of(context).textTheme.subtitle1,
           ),
           Text(

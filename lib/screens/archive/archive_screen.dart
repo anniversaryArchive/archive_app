@@ -1,7 +1,9 @@
+import 'package:archive/api/queries.dart';
 import 'package:archive/models/archive.dart';
 import 'package:archive/screens/archive/components/map_bottom_sheet.dart';
 import 'package:archive/screens/archive/components/map_view.dart';
 import 'package:flutter/material.dart';
+import 'package:graphql/client.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class ArchiveScreen extends StatefulWidget {
@@ -11,16 +13,29 @@ class ArchiveScreen extends StatefulWidget {
   _ArchiveScreenState createState() => _ArchiveScreenState();
 }
 
-final tempArchive = Archive(id: 'id_01', name: '뿌요카페', lat: 37.55106702139064, lng: 126.92214171381839);
-
 class _ArchiveScreenState extends State<ArchiveScreen> {
   WebViewController? _mapController;    // 지도 Controller
   double _lat = 37.54921196;            // 현재 지도 중앙 위도값
   double _lng = 126.92383907;           // 현재 지도 중앙 경도값
   bool _mapLoaded = false;              // 지도 Load 여부
 
-  // final List<Archive> _archives = [tempArchive];  // 카페 리스트
-  final List<Archive> _archives = [tempArchive, tempArchive, tempArchive, tempArchive, tempArchive, tempArchive, tempArchive, tempArchive, tempArchive, tempArchive, tempArchive, tempArchive, tempArchive, tempArchive, tempArchive, tempArchive];  // 카페 리스트
+  List<Archive> _archives = [];  // 카페 리스트
+
+  @override
+  void initState() {
+    super.initState();
+    _getArchives();
+  }
+
+  void _getArchives() async {
+    try {
+      QueryResult result = await Queries.getArchives();
+      List<dynamic> archives = result.data?['archives'] ?? [];
+      setState(() {
+        _archives = archives.map((archive) => Archive.fromJson(archive)).toList();
+      });
+    } catch (_) { rethrow; }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,12 +87,14 @@ class _ArchiveScreenState extends State<ArchiveScreen> {
 
   /// Test) Floating Button 클릭 시, Marker 가 추가되게끔 구현
   void _clickAddMarkerBtn() {
+    /*
     double lat = _lat + 0.0003;
     double lng = _lng + 0.0003;
     String id = 'archive_${_archives.length}';
     Archive archive = Archive(id: id, name: id, lat: lat, lng: lng);
     _archives.add(archive);
     _addMarker(archive);
+     */
   }
 
   void _addMarker(Archive archive) async {
