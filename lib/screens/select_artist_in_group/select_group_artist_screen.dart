@@ -44,11 +44,9 @@ class _SelectGroupArtistState extends State<SelectGroupArtistScreen> {
         groupJson['birthDay'] = groupJson['debutDate'];
         _groupArtists.add(Artist.fromJson(groupJson));
 
-        for (var artist in artistList) {
-          if (group.id == artist.group?.id) {
-            _groupArtists.add(artist);
-          }
-        }
+        _groupArtists.addAll(resultData.map((artist) {
+          return Artist.fromJson(artist);
+        }).where((artist) => artist.group?.id == group.id));
       }
 
       setState(() { _isLoading = false; });
