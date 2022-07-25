@@ -61,7 +61,9 @@ class _SelectGroupArtistState extends State<SelectGroupArtistScreen> {
 
         return SelectGroupArtistItem(
           groupArtist: groupArtist,
-          onClick: _clickArtist,
+          onClick: () {
+            _clickArtist(groupArtist);
+          },
         );
       },
     );

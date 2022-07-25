@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class SelectGroupArtistItem extends StatelessWidget {
   final Artist groupArtist;
-  final Function(Artist) onClick;
+  final VoidCallback onClick;
 
   const SelectGroupArtistItem({Key? key, required this.groupArtist, required this.onClick}) : super(key: key);
 
@@ -54,7 +54,7 @@ class SelectGroupArtistItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => onClick(groupArtist),
+      onTap: () => onClick.call(),
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 11.0),
         child: Row(
