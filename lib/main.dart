@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 
+import 'screens/select_artist_in_group/select_group_artist_screen.dart';
+
 void main() async {
   try {
     await initServices();
@@ -65,7 +67,7 @@ class _MyAppState extends State<MyApp> {
       GetPage(name: '/', page: () => const HomeScreen()),
       GetPage(name: '/archive', page: () => const ArchiveScreen()),
       GetPage(name: '/select-artist', page: () => const SelectArtistScreen()),
-      GetPage(name: '/select-member', page: () => const HomeScreen()),
+      GetPage(name: '/select-group-artist', page: () => SelectGroupArtistScreen()),
     ];
   }
 }
